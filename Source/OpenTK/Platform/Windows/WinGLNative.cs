@@ -525,50 +525,50 @@ namespace OpenTK.Platform.Windows
 
         void HandleLButtonDown(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.SetCapture(window.Handle);
+            //Functions.SetCapture(window.Handle);
             mouse[MouseButton.Left] = true;
         }
 
         void HandleMButtonDown(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.SetCapture(window.Handle);
+            //Functions.SetCapture(window.Handle);
             mouse[MouseButton.Middle] = true;
         }
 
         void HandleRButtonDown(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.SetCapture(window.Handle);
+            //Functions.SetCapture(window.Handle);
             mouse[MouseButton.Right] = true;
         }
 
         void HandleXButtonDown(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.SetCapture(window.Handle);
+            //Functions.SetCapture(window.Handle);
             mouse[((wParam.ToInt32() & 0xFFFF0000) >> 16) == 1 ?
                 MouseButton.Button1 : MouseButton.Button2] = true;
         }
 
         void HandleLButtonUp(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.ReleaseCapture();
+            //Functions.ReleaseCapture();
             mouse[MouseButton.Left] = false;
         }
 
         void HandleMButtonUp(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.ReleaseCapture();
+            //Functions.ReleaseCapture();
             mouse[MouseButton.Middle] = false;
         }
 
         void HandleRButtonUp(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.ReleaseCapture();
+            //Functions.ReleaseCapture();
             mouse[MouseButton.Right] = false;
         }
 
         void HandleXButtonUp(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
         {
-            Functions.ReleaseCapture();
+            //Functions.ReleaseCapture();
             mouse[((wParam.ToInt32() & 0xFFFF0000) >> 16) == 1 ?
                 MouseButton.Button1 : MouseButton.Button2] = false;
         }
