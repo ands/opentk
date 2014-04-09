@@ -59,6 +59,7 @@ namespace OpenTK.Platform.SDL2
         WindowBorder window_border = WindowBorder.Resizable;
         Icon icon;
         string window_title;
+        IntPtr cursorHandle;
 
         // Used in KeyPress event to decode SDL UTF8 text strings
         // to .Net UTF16 strings 
@@ -917,6 +918,12 @@ namespace OpenTK.Platform.SDL2
                     }
                 }
             }
+        }
+
+        public IntPtr CursorHandle
+        {
+            get { return cursorHandle; }
+            set { cursorHandle = value; SDL.SetCursor(cursorHandle); }
         }
 
         #endregion

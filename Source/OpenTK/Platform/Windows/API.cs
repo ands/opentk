@@ -841,7 +841,7 @@ namespace OpenTK.Platform.Windows
 
         #endregion
 
-        #region LoadCursor
+        #region Cursor
 
         [DllImport("user32.dll")]
         public static extern HCURSOR LoadCursor(HINSTANCE hInstance, LPCTSTR lpCursorName);
@@ -853,6 +853,9 @@ namespace OpenTK.Platform.Windows
         {
             return LoadCursor(IntPtr.Zero, new IntPtr((int)lpCursorName));
         }
+
+        [DllImport("user32.dll")]
+        public static extern HCURSOR SetCursor(HCURSOR cursor);
 
         #endregion
 

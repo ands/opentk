@@ -143,6 +143,11 @@ namespace OpenTK
 //        bool CursorGrabbed { get; set; }
 
         /// <summary>
+        /// Gets or sets a cursor handle, that represents the visible cursor instance.
+        /// </summary>
+        IntPtr CursorHandle { get; set; }
+
+        /// <summary>
         /// Closes this window.
         /// </summary>
         void Close();

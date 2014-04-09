@@ -444,6 +444,10 @@ namespace OpenTK.Platform.SDL2
         public static extern int ShowCursor(bool toggle);
 
         [SuppressUnmanagedCodeSecurity]
+        [DllImport(lib, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_SetCursor", ExactSpelling = true)]
+        public static extern void SetCursor(IntPtr cursor);
+
+        [SuppressUnmanagedCodeSecurity]
         [DllImport(lib, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_ShowWindow", ExactSpelling = true)]
         public static extern void ShowWindow(IntPtr window);
 

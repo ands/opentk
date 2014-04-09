@@ -554,7 +554,7 @@ namespace OpenTK
 
         #endregion
 
-        #region CursorVisible
+        #region Cursor
 
         /// <summary>
         /// Gets or sets a value indicating whether the mouse cursor is visible.
@@ -567,6 +567,15 @@ namespace OpenTK
                 cursor_visible = value;
                 implementation.CursorVisible = value;
             }
+        }
+
+        /// <summary>
+        /// Gets or sets a cursor handle, that represents the visible cursor instance.
+        /// </summary>
+        public IntPtr CursorHandle
+        {
+            get { return implementation.CursorHandle; }
+            set { implementation.CursorHandle = value; }
         }
 
         #endregion

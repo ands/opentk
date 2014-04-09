@@ -958,6 +958,13 @@ namespace OpenTK.Platform.MacOS
             }
         }
 
+        // TODO: implement cursor assignment
+        public IntPtr CursorHandle
+        {
+            get { return IntPtr.Zero; }
+            set { }
+        }
+
         public void Close()
         {
             CancelEventArgs e = new CancelEventArgs();

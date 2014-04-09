@@ -103,6 +103,7 @@ namespace OpenTK.Platform.Windows
         KeyPressEventArgs key_press = new KeyPressEventArgs((char)0);
 
         int cursor_visible_count = 0;
+        IntPtr cursorHandle = IntPtr.Zero;
 
         static readonly object SyncRoot = new object();
 
@@ -384,6 +385,17 @@ namespace OpenTK.Platform.Windows
                 // Ensure cursor remains grabbed
                 if (!CursorVisible)
                     GrabCursor();
+            }
+        }
+
+        IntPtr HandleCursor(IntPtr handle, WindowMessage message, IntPtr wParam, IntPtr lParam)
+        {
+            if (mouse_outside_window || cursorHandle == IntPtr.Zero || !CursorVisible)
+                return Functions.DefWindowProc(handle, message, wParam, lParam);
+            else
+            {
+                Functions.SetCursor(cursorHandle);
+                return (IntPtr)1;
             }
         }
 
@@ -686,6 +698,9 @@ namespace OpenTK.Platform.Windows
                 case WindowMessage.SIZE:
                     HandleSize(handle, message, wParam, lParam);
                     break;
+
+                case WindowMessage.SETCURSOR:
+                    return HandleCursor(handle, message, wParam, lParam);
 
                 #endregion
 
@@ -1166,7 +1181,7 @@ namespace OpenTK.Platform.Windows
 
         #endregion
         
-        #region CursorVisible
+        #region Cursor
         
         public bool CursorVisible
         {
@@ -1194,6 +1209,12 @@ namespace OpenTK.Platform.Windows
                     GrabCursor();
                 }
             }
+        }
+
+        public IntPtr CursorHandle
+        {
+            get { return cursorHandle; }
+            set { cursorHandle = value; Functions.SetCursor(cursorHandle); }
         }
         
         #endregion

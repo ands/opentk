@@ -115,6 +115,7 @@ namespace OpenTK.Platform.X11
         bool _decorations_hidden = false;
         bool cursor_visible = true;
         int mouse_rel_x, mouse_rel_y;
+        IntPtr cursorHandle;
 
          // Keyboard input
         readonly byte[] ascii = new byte[16];
@@ -1470,6 +1471,19 @@ namespace OpenTK.Platform.X11
                         Functions.XDefineCursor(window.Display, window.Handle, EmptyCursor);
                         cursor_visible = false;
                     }
+                }
+            }
+        }
+
+        public IntPtr CursorHandle
+        {
+            get { return cursorHandle; }
+            set
+            {
+                cursorHandle = value;
+                using (new XLock(window.Display))
+                {
+                    Functions.XDefineCursor(window.Display, window.Handle, cursorHandle);
                 }
             }
         }
