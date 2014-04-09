@@ -1,5 +1,8 @@
 OpenTK
 ======
+
+This is a fork of the official OpenTK repository. It adds low level cursor support to some of the native GameWindow classes via native cursor handles.
+
  
 The Open Toolkit is an advanced, low-level C# library that wraps OpenGL, OpenGL ES and OpenAL. It is suitable for games, scientific applications and any other project that requires 3d graphics, audio or compute functionality.
  
